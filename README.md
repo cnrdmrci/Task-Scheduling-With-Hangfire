@@ -64,7 +64,7 @@ RecurringJob.AddOrUpdate(() => Console.WriteLine("Recurring!"), Cron.Daily);
 	Belirli bir iş tamamlandığında belirtilen farklı bir işi çalıştıran görev şeklidir.
 
 ```csharp
-BackgroundJob.ContinueWith(jobId, () => Console.WriteLine("Continuation!"));
+BackgroundJob.ContinueJobWith(jobId, () => Console.WriteLine("Continuation!"));
 ```
 
 ### Cron Zamanlaması İncelemesi
