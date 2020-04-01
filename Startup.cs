@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,10 @@ namespace TaskSchedulingWithHangfire
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddHangfire(x =>
+                x.UseSqlServerStorage("Server=localhost;Database=HangfireDb;User Id=userName;Password=password;"));
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +40,8 @@ namespace TaskSchedulingWithHangfire
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseHangfireDashboard();
 
             app.UseHttpsRedirection();
 
