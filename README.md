@@ -31,7 +31,7 @@ public void Configure(IApplicationBuilder app)
 Şeklinde ConfigureServices ve Configure fonksiyonlarına yukarıdaki bilgilerin girilmesi gerekli. Veritabanı için gerekli tablolar otomatik olarak oluşturulacaktır ve kullanıma hazır hale gelecektir.\
 Programı çalıştırdığınızda arayüze erişmek için adres;
 
-> https://<uygulama-adresi>/hangfire
+> https://uygulama-adresi/hangfire
 
 ### Hangfire Kullanım
 
