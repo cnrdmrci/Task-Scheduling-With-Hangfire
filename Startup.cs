@@ -41,7 +41,31 @@ namespace TaskSchedulingWithHangfire
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHangfireDashboard();
+            //app.UseHangfireDashboard();
+            //Üst satýrdaki gibi default ayarlarý kullanabilir yada aþaðýdaki gibi ayarlama yapabiliriz.
+            app.UseHangfireDashboard("/hangfire",new DashboardOptions()
+            {
+                DashboardTitle = "Dashboard Title",
+                AppPath = "Home/About", //Dashboard üzerinden ana siteye dönme adresi
+                Authorization = new []{new HangfireDashboardAuthorizationFilter()}
+            });
+
+            //Yadaa----------------------------------------------
+            /*
+            //app.UseHangfireServer();
+            app.UseHangfireServer(new BackgroundJobServerOptions()
+            {
+                //Yapýlacak görevler default olarak 15 saniyede bir kontrol edilir. Burada 60 saniye yaptýk.
+                SchedulePollingInterval = TimeSpan.FromSeconds(60),
+
+                //Arkaplanda çalýþacak görev sayýsýný güncelleyebiliriz.
+                WorkerCount = Environment.ProcessorCount * 3
+            });
+            */
+
+            HangfireConfig.Initialize();
+            //Her gün çalýþsýn ve veritabanýnýn yedeðini alsýn.
+            HangfireConfig.DatabaseBackUp();
 
             app.UseHttpsRedirection();
 
