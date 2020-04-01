@@ -37,14 +37,14 @@ Programı çalıştırdığınızda arayüze erişmek için adres;
 
 ##### - Bir Kez Çalışan İşler 
 
-- Fire And Forget
+- Fire And Forget\
 	Bir kez ve hemen çalışan görev şeklidir. Kullanımı;
 
 ```csharp
 var jobId = BackgroundJob.Enqueue(() => Console.WriteLine("Fire And Forget!"));
 ```
 
-- Delayed
+- Delayed\
 	Oluşturulmasından itibaren, belirlenen süre kadar sonra çalıştırılan görev şeklidir.
 
 ```csharp
@@ -53,14 +53,14 @@ var jobId = BackgroundJob.Schedule(() => Console.WriteLine("Delayed!"),TimeSpan.
 
 ##### - Tekrarlayarak Çalışan İşler
 
-- Recurring
+- Recurring\
 	CRON süresine göre haftalık, günlük, saatlik vb. biçiminde tekrarlayarak çalışan görev şeklidir. 
 
 ```csharp
 RecurringJob.AddOrUpdate(() => Console.WriteLine("Recurring!"), Cron.Daily);
 ```
 	
-- Continuation
+- Continuation\
 	Belirli bir iş tamamlandığında belirtilen farklı bir işi çalıştıran görev şeklidir.
 
 ```csharp
